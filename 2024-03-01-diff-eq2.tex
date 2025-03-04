@@ -1,0 +1,202 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{xcolor}
+\usepackage{tasks}
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\title{OAMK}
+\author{Juha-Matti Huusko}
+\date{August 2023}
+
+\newcommand{\ratkaisu}[1]{{\color{blue}\quad\textrm{Solution } #1}}
+
+\renewcommand{\ratkaisu}[1]{}
+
+\begin{document}
+\thispagestyle{empty}
+
+%\section*{Uusintakoe 17.11.2023}
+%\section*{Loppukoe 20.10.2023}
+\subsection*{Applied Mathematics and Physics in Programming ID00CS50-3003}
+\textbf{Mathematics, teacher:} Juha-Matti Huusko, juha-matti.huusko@oamk.fi
+
+\noindent Answer to all six questions. In the end of the pdf file, there are some formulas.
+
+$$
+***
+$$
+
+\begin{enumerate}
+\item Give the requested examples.
+\begin{enumerate}
+\item A differential equation of order 3.
+\item A separable differential equation.
+\item A non-separable differential equation.
+\item A non-linear differential equation.
+\item A linear and homogeneous differential equation.
+\item A linear and non-homogeneous differential equation.
+\end{enumerate}
+\item Show that the functions $y$ are solutions to the corresponding differential equations.
+\begin{enumerate}
+\item Show that $y=\frac{1}{1-x}$ is a particular solution for $y'=y^2$.
+\item Show that $y=3-x+x\ln(x)$ is a particular solution for $y'=\ln(x)$.
+\end{enumerate}
+\ratkaisu{The derivative is
+$$
+y'=\frac{d}{dx}(1-x)^{-1}=-1\cdot (1-x)^{-1-1}\frac{d}{dx}(1-x)=-1\cdot (1-x)^{-2}\cdot(-1)=\frac{1}{(1-x)^2}=y^2
+$$}
+
+\item The general solution of $y'=4x^2$ is $y=\frac{4}{3}x^3+C$, where $C$ is any constant. Which particular solution passes through the point $(-3,-30)$?
+%(that is, satisfies $x=-3$, $y=-30$)?
+\ratkaisu{We have $y(x)=y=\frac{4}{3}x^3+C.$ Set $x=-3$ and $y(-3)=-30$ to obtain
+$$
+-30=\frac{4}{3}(-3)^3+C,
+$$
+that is
+$$
+-30=-36+C.
+$$
+We have $C=6$. The desired solution is $y(x)=y=\frac{4}{3}x^3+6$.
+}
+\item Solve
+$$
+y'-\tan(x)y=3(\sin(x))^2.
+$$
+\item For the function
+$$
+f(t)
+=\begin{cases}
+1,&\textrm{ if }0\leq x\leq \pi\\
+-1,&\textrm{ if }-\pi\leq x\leq 0
+\end{cases}
+$$
+find its Fourier series.
+
+\item Find the discrete Fourier transform of $[2,3]$. In other words, calculate by hand $\texttt{fft}([2,3])$.
+\ratkaisu{$\texttt{fft}([2,3])=[5,-1]$}
+\end{enumerate}
+
+\textbf{In the following pages, there are some formulas.}
+
+\newpage
+\section*{Formulas}
+\subsection*{Differentiation and integration}
+
+$$
+\begin{array}{rl|rl}
+\textbf{Differentiation} && \textbf{Integration}&\\[2mm]
+Dx^n&=nx^{n-1}     \qquad\qquad&\qquad\qquad\int x^ndx&=\frac{x^{n+1}}{n+1}+C \\[2mm]
+De^x&=e^x &\int e^xdx&=e^x+C\\[2mm]
+Db^x&=b^x\ln(b) & \int b^xdx&=\frac{b^x}{\ln(b)}\\[2mm]
+D\ln(x)&=\frac{1}{x} &&\\[2mm]
+D\ln|x|&=\frac{1}{x} &\int\frac{1}{x}dx&=\ln|x|+C\\[2mm]
+D\log_a(x)&=\frac{1}{x\ln(a)} &&\\[2mm]
+D\log_a|x|&=\frac{1}{x\ln(a)} &&\\[2mm]
+D\sin(x)&=\cos(x)   &\int\cos(x)dx&=\sin(x)+C\\[2mm]
+D\cos(x)&=-\sin(x)  &\int\sin(x)dx&=-\cos(x)+C\\[2mm]
+D\tan(x)&=1+\tan^2(x) \qquad&\qquad\int 1+\tan^2(x)dx&=\tan(x)+C\\[2mm]
+
+Dx\ln(x)-x&=\ln(x) & \int\ln(x)dx&=x\ln(x)-x+C\\[10mm]
+
+D\arcsin(x)&=\frac{1}{\sqrt{1-x^2}} & \int\frac{1}{\sqrt{1-x^2}}&=\arcsin(x)+C\\
+D\arccos(x)&=\frac{1}{-\sqrt{1-x^2}} & \int\frac{1}{-\sqrt{1-x^2}}&=\arccos(x)+C\\
+D\arctan(x)&=\frac{1}{1+x^2} & \int\frac{1}{1+x^2}&=\arctan(x)+C\\
+
+D\sinh(x)&=\cosh(x) &&\\
+D\cosh(x)&=\sinh(x) &&\\
+D\tanh(x)&=\frac{1}{\cosh^2(x)} &&\\
+\end{array}  
+$$
+\vspace{1cm}
+$$
+\begin{array}{rl|rl}
+\textbf{Differentiation} && \textbf{Integration}&\\[2mm]
+D f(g(x))&=f'(g(x))g'(x) & \int f(g(x))g'(x)dx&=f(g(x))+C\\[2mm]
+\textrm{Special cases} &&&\\
+D\ln(g(x))&=\frac{g'(x)}{g(x)} & \int \frac{g'(x)}{g(x)}dx&=\ln(g(x))+C\\[2mm]
+D e^{g(x)}&=e^{g(x)}g'(x) & \int g'(x)e^{g(x)}dx&=e^{g(x)}+C\\[10mm]
+D fg&=f'g+fg'& \int f'g dx&=fg-\int fg'dx\\[2mm]
+D (f/g)&=(gf'-fg')/g^2 &&\\[2mm]
+\end{array}  
+$$
+
+\newpage
+\subsection*{Solution formula}
+
+The solution of
+$$
+y'+p(x)y=q(x)
+$$
+is
+$$
+y(x)=\frac{C}{\mu(x)}+\frac{1}{\mu(x)}\int \mu(x)q(x)dx,\quad\textrm{where}\quad
+\mu(x)=e^{\int p(x)dx}.
+$$
+
+\subsection*{Fourier series}
+
+If $f$ is periodic with period $2\pi$ and $f$, $f'$ and $f''$ are piece-wise continuous, then
+$$
+f(x)
+=\frac{a_0}{2}
++\sum_{n=1}^\infty a_n\cos(nx)+b_n\sin(nx),
+$$
+where
+\begin{equation*}
+\begin{split}
+a_0&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)dx\\
+a_n&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)\cos(nx)dx\\
+b_n&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)\sin(nx)dx\\
+\end{split}
+\end{equation*}
+Moreover, if $f$ is odd, that is, $f(-x)=-f(x)$,
+then
+$$
+f(x)
+=\sum_{n=1}^\infty b_n\sin(nx),
+$$
+and if $f$ is even, that is, $f(-x)=f(x)$, then
+$$
+f(x)
+=\frac{a_0}{2}
++\sum_{n=1}^\infty a_n\cos(nx)
+$$
+
+\subsection*{Discrete Fourier transform / FFT}
+
+Transform and inverse transform
+$$
+\begin{cases}
+y_0&=x_0+x_1\\
+y_1&=x_0-x_1
+\end{cases},\quad
+\begin{cases}
+y_0&=\frac{1}{2}(x_0+x_1)\\
+y_1&=\frac{1}{2}(x_0-x_1)
+\end{cases}
+$$
+Transform and inverse transform
+$$
+\begin{cases}
+y_0&=x_0+x_1+x_2+x_3\\
+y_1&=x_0-ix_1-x_2+ix_3\\
+y_2&=x_0-x_1+x_2-x_3\\
+y_3&=x_0+ix_1-x_2-ix_3\\
+\end{cases},\quad
+\begin{cases}
+y_0&=\frac{1}{4}(x_0+x_1+x_2+x_3)\\
+y_1&=\frac{1}{4}(x_0+ix_1-x_2-ix_3)\\
+y_2&=\frac{1}{4}(x_0-x_1+x_2-x_3)\\
+y_3&=\frac{1}{4}(x_0-ix_1-x_2+ix_3)\\
+\end{cases}
+$$
+
+\newpage
+
+
+\end{document}

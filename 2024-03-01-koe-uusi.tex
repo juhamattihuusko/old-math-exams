@@ -1,0 +1,269 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{xcolor}
+\usepackage{tasks}
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\title{OAMK}
+\author{Juha-Matti Huusko}
+\date{August 2023}
+
+\newcommand{\ratkaisu}[1]{{\color{blue}\quad\textrm{Solution } #1}}
+
+\renewcommand{\ratkaisu}[1]{}
+
+\newcommand{\yes}[0]{yes}
+\newcommand{\no}[0]{no}
+
+\renewcommand{\yes}[0]{}
+\renewcommand{\no}[0]{}
+
+\begin{document}
+%\thispagestyle{empty}
+
+%\section*{Uusintakoe 17.11.2023}
+%\section*{Loppukoe 20.10.2023}
+\subsection*{Applied Mathematics and Physics in Programming ID00CS50-3003}
+\textbf{Mathematics, teacher:} Juha-Matti Huusko, juha-matti.huusko@oamk.fi
+
+\noindent Answer to all six questions. In the end, there are some formulas.
+
+$$
+***
+$$
+
+\begin{enumerate}
+\item Consider the equations
+\begin{enumerate}
+\item [(K)] $(y''')^3+\sin(xy)y^2=0$
+\item [(L)] $y'=\sin(x)y$
+\item [(M)] $(y')^3+x^2y=x^3$
+\item [(N)] $y'''+x^2y=0$.
+\end{enumerate}
+Answer to the following questions.
+\begin{enumerate}
+\item Which of the equations have order $3$?
+\item Which of the equations are separable?
+\item Which of the equations are non-linear?
+\item Which of the equations are linear and homogeneous?
+\item Which of the equations are linear and non-homogeneous?
+\end{enumerate}
+(To each question, it is enough to mention the equations which have the property.\\ For example
+\begin{itemize}
+\item Which of the equations have order $7$? \textbf{None}
+\item Which of the equations are differential equations? \textbf{K, L, M, N})
+\end{itemize}
+
+\item Show that the functions $y$ are solutions to the corresponding differential equations.
+\begin{enumerate}
+\item Show that $y=\dfrac{1}{(1-x)^2}$ is a particular solution for $y'=2(1-x)y^2$.
+\item Show that $y=\dfrac{e^{-2x}}{3}$ is a particular solution for $y'+5y=e^{-2x}$.
+\end{enumerate}
+\ratkaisu{The derivative is
+$$
+y'=\frac{d}{dx}(1-x)^{-1}=-1\cdot (1-x)^{-1-1}\frac{d}{dx}(1-x)=-1\cdot (1-x)^{-2}\cdot(-1)=\frac{1}{(1-x)^2}=y^2
+$$}
+
+\item The general solution of $y'=4x^2$ is $y=\frac{4}{3}x^3+C$, where $C$ is any constant. Which particular solution passes through the point $(-3,-40)$?
+%(that is, satisfies $x=-3$, $y=-30$)?
+\ratkaisu{We have $y(x)=y=\frac{4}{3}x^3+C.$ Set $x=-3$ and $y(-3)=-30$ to obtain
+$$
+-30=\frac{4}{3}(-3)^3+C,
+$$
+that is
+$$
+-30=-36+C.
+$$
+We have $C=6$. The desired solution is $y(x)=y=\frac{4}{3}x^3+6$.
+}
+\newpage
+
+\item The solution of
+$$
+y'+p(x)y=q(x)
+$$
+is given by the formula
+$$
+y(x)=\frac{C}{\mu(x)}+\frac{1}{\mu(x)}\int \mu(x)q(x)dx,\quad\textrm{where}\quad
+\mu(x)=e^{\int p(x)dx}.
+$$
+Use the formula to solve
+$$
+y'-\frac{5}{x}y=x^2
+$$
+by following the instructions.
+\begin{enumerate}
+\item Identify $p(x)$ and $q(x)$.\ratkaisu{$p(x)=-\frac{5}{x}$ and $q(x)=x^2$}
+\item Calculate $\int p(x)dx$. Don't add a constant $C$ yet.\ratkaisu{$\int p(x)dx=-5\ln(x)$}
+\item Simplify $\mu(x)=e^{\int p(x)dx}$ and $\frac{1}{\mu(x)}$\ratkaisu{$\mu(x)=\frac{1}{x^5}$ and $\frac{1}{\mu(x)}=x^5$}
+\item Calculate $\int \mu(x)q(x)dx$.
+\ratkaisu{$-\frac{1}{2x^2}$}
+\item The solution is $y(x)=\frac{C}{\mu(x)}+\frac{1}{\mu(x)}\int \mu(x)q(x)dx$.
+\ratkaisu{$y(x)=Cx^5-\frac12 x^3$}
+\end{enumerate}
+
+\item Consider the $2\pi$ periodic function $f(x)$ which satisfies
+$$
+f(t)
+=\begin{cases}
+1,&\textrm{ if }0\leq x\leq \pi\\
+-1,&\textrm{ if }-\pi\leq x\leq 0.
+\end{cases}
+$$
+Which of the Fourier coefficients $a_0$, $a_1$, $a_2$, $b_1$ and $b_2$ are nonzero?\ratkaisu{Because $f(-x)=-f(x)$, the function $f$ is odd and the list of formulas gives
+$$
+f(x)
+=\sum_{n=1}^\infty b_n\sin(nx),
+\quad\textrm{where}\quad
+b_n=\frac{2}{\pi}\int_{0}^{\pi}
+f(x)\sin(nx)dx
+$$
+Therefore, $a_0=a_1=a_2=0$. Moreover,
+$$
+b_1=\frac{2}{\pi}\int_{0}^{\pi}
+\sin(x)dx
+=\frac{2}{\pi}(\cos(0)-\cos(\pi))=\frac{4}{\pi},
+$$
+which is nonzero. Moreover,
+$$
+b_2=\frac{2}{\pi}\int_{0}^{\pi}
+\sin(2x)dx
+=\frac{2}{\pi}\frac{1}{2}(\cos(2\cdot 0)-\cos(2\cdot \pi))=0.
+$$
+}
+
+\item Find the discrete Fourier transform of $[2,3,-5,7]$. In other words, calculate by hand $\texttt{fft}([2,3,-5,7])$.
+\ratkaisu{$\texttt{fft}([2,3])=[7,7+4i,-13,7-4i]$}
+\end{enumerate}
+
+\textbf{In the following pages, there are some formulas.}
+
+\newpage
+\section*{Formulas}
+\subsection*{Differentiation and integration}
+
+$$
+\begin{array}{rl|rl}
+\textbf{Differentiation} && \textbf{Integration}&\\[2mm]
+Dx^n&=nx^{n-1}     \qquad\qquad&\qquad\qquad\int x^ndx&=\frac{x^{n+1}}{n+1}+C \\[2mm]
+De^x&=e^x &\int e^xdx&=e^x+C\\[2mm]
+Db^x&=b^x\ln(b) & \int b^xdx&=\frac{b^x}{\ln(b)}\\[2mm]
+D\ln(x)&=\frac{1}{x} &&\\[2mm]
+D\ln|x|&=\frac{1}{x} &\int\frac{1}{x}dx&=\ln|x|+C\\[2mm]
+D\log_a(x)&=\frac{1}{x\ln(a)} &&\\[2mm]
+D\log_a|x|&=\frac{1}{x\ln(a)} &&\\[2mm]
+D\sin(x)&=\cos(x)   &\int\cos(x)dx&=\sin(x)+C\\[2mm]
+D\cos(x)&=-\sin(x)  &\int\sin(x)dx&=-\cos(x)+C\\[2mm]
+D\tan(x)&=1+\tan^2(x) \qquad&\qquad\int 1+\tan^2(x)dx&=\tan(x)+C\\[2mm]
+
+Dx\ln(x)-x&=\ln(x) & \int\ln(x)dx&=x\ln(x)-x+C\\[10mm]
+
+D\arcsin(x)&=\frac{1}{\sqrt{1-x^2}} & \int\frac{1}{\sqrt{1-x^2}}&=\arcsin(x)+C\\
+D\arccos(x)&=\frac{1}{-\sqrt{1-x^2}} & \int\frac{1}{-\sqrt{1-x^2}}&=\arccos(x)+C\\
+D\arctan(x)&=\frac{1}{1+x^2} & \int\frac{1}{1+x^2}&=\arctan(x)+C\\
+
+D\sinh(x)&=\cosh(x) &&\\
+D\cosh(x)&=\sinh(x) &&\\
+D\tanh(x)&=\frac{1}{\cosh^2(x)} &&\\
+\end{array}  
+$$
+\vspace{1cm}
+$$
+\begin{array}{rl|rl}
+\textbf{Differentiation} && \textbf{Integration}&\\[2mm]
+D f(g(x))&=f'(g(x))g'(x) & \int f'(g(x))g'(x)dx&=f(g(x))+C\\[2mm]
+\textrm{Special cases} &&&\\
+D\ln(g(x))&=\frac{g'(x)}{g(x)} & \int \frac{g'(x)}{g(x)}dx&=\ln(g(x))+C\\[2mm]
+D e^{g(x)}&=e^{g(x)}g'(x) & \int g'(x)e^{g(x)}dx&=e^{g(x)}+C\\[10mm]
+D fg&=f'g+fg'& \int f'g dx&=fg-\int fg'dx\\[2mm]
+D (f/g)&=(gf'-fg')/g^2 &&\\[2mm]
+D f^{-1}(x)&=\frac{1}{f'(f^{-1}(x))}&&\\
+\end{array}  
+$$
+
+\newpage
+\subsection*{Solution formula}
+
+The solution of
+$$
+y'+p(x)y=q(x)
+$$
+is
+$$
+y(x)=\frac{C}{\mu(x)}+\frac{1}{\mu(x)}\int \mu(x)q(x)dx,\quad\textrm{where}\quad
+\mu(x)=e^{\int p(x)dx}.
+$$
+
+\subsection*{Fourier series}
+
+If $f$ is periodic with period $2\pi$ and $f$, $f'$ and $f''$ are piece-wise continuous, then
+$$
+f(x)
+=\frac{a_0}{2}
++\sum_{n=1}^\infty a_n\cos(nx)+b_n\sin(nx),
+$$
+where
+\begin{equation*}
+\begin{split}
+a_0&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)dx\\
+a_n&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)\cos(nx)dx\\
+b_n&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)\sin(nx)dx\\
+\end{split}
+\end{equation*}
+Moreover, if $f$ is odd, that is, $f(-x)=-f(x)$,
+then
+$$
+f(x)
+=\sum_{n=1}^\infty b_n\sin(nx),
+\quad\textrm{where}\quad
+b_n=\frac{2}{\pi}\int_{0}^{\pi}
+f(x)\sin(nx)dx,
+$$
+and if $f$ is even, that is, $f(-x)=f(x)$, then
+$$
+f(x)
+=\frac{a_0}{2}
++\sum_{n=1}^\infty a_n\cos(nx)
+\quad\textrm{where}\quad
+a_n=\frac{2}{\pi}\int_{0}^{\pi}
+f(x)\cos(nx)dx.
+$$
+
+\subsection*{Discrete Fourier transform / FFT}
+
+Transform and inverse transform
+$$
+\begin{cases}
+y_0&=x_0+x_1\\
+y_1&=x_0-x_1
+\end{cases},\quad
+\begin{cases}
+y_0&=\frac{1}{2}(x_0+x_1)\\
+y_1&=\frac{1}{2}(x_0-x_1)
+\end{cases}
+$$
+Transform and inverse transform
+$$
+\begin{cases}
+y_0&=x_0+x_1+x_2+x_3\\
+y_1&=x_0-ix_1-x_2+ix_3\\
+y_2&=x_0-x_1+x_2-x_3\\
+y_3&=x_0+ix_1-x_2-ix_3\\
+\end{cases},\quad
+\begin{cases}
+y_0&=\frac{1}{4}(x_0+x_1+x_2+x_3)\\
+y_1&=\frac{1}{4}(x_0+ix_1-x_2-ix_3)\\
+y_2&=\frac{1}{4}(x_0-x_1+x_2-x_3)\\
+y_3&=\frac{1}{4}(x_0-ix_1-x_2+ix_3)\\
+\end{cases}
+$$
+
+\newpage
+
+
+\end{document}

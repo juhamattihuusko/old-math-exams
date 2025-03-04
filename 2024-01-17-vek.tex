@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{xcolor}
+
+\usepackage[margin=1cm]{geometry}
+
+\title{OAMK}
+\author{Juha-Matti Huusko}
+\date{August 2023}
+
+%\renewcommand{\ratkaisu}[1]{}
+
+\newcommand{\hatu}{\hat{u}}
+\newcommand{\hatv}{\hat{v}}
+\newcommand{\hatw}{\hat{w}}
+\newcommand{\hatn}{\hat{n}}
+
+
+\newcommand{\vu}{\overline{u}}
+\newcommand{\vv}{\overline{v}}
+\newcommand{\vw}{\overline{w}}
+\newcommand{\vp}{\overline{p}}
+\newcommand{\vn}{\overline{n}}
+
+\newcommand{\va}{\overline{a}}
+\newcommand{\vb}{\overline{b}}
+\newcommand{\vc}{\overline{c}}
+
+\newcommand{\vi}{\hat{\imath}}
+\newcommand{\vj}{\hat{\jmath}}
+\newcommand{\vk}{\hat{k}}
+
+\newcommand{\ratkaisu}[1]{\hfill{\color{blue}\quad\textrm{Ratkaisu: } #1}}
+
+\newcommand{\ratkaisuu}[1]{{\color{blue}\textrm{Ratkaisu: } #1}}
+
+\renewcommand{\ratkaisu}[1]{}
+\renewcommand{\ratkaisuu}[1]{}
+
+\newcommand{\vihje}[1]{{\color{red}Vihje. #1}}
+\newcommand{\extra}[0]{\textbf{Extra.}~}
+
+\begin{document}
+\thispagestyle{empty}
+
+\section*{Koe 17.1.2024}
+%\section*{Loppukoe 20.10.2023}
+\paragraph*{Tietotekniikan sovellusprojekti IN00ED23-3001,\\ matematiikan osio, Vektorit ja kompleksilukujen perusteet (3op)}
+
+\begin{enumerate}
+%\setlength{\itemsep}{40pt}
+\item Laske vektorien $\vu=(1,12,-2)$ ja $\vv=(3,0,1)$ pistetulo.\ratkaisu{$1$}
+
+%\item Laske vektorin $\vu=(1,5,-1)$ pituus.\ratkaisu{$\sqrt{27}$}
+
+\item Määritä vektorin $\vu=2\vi-4\vj+4\vk$ suuntainen yksikkövektori.\ratkaisu{$\hat{u}=\frac{1}{3}\vi-\frac{2}{3}\vj+\frac{2}{3}\vk$}
+
+\item (Muokattu.) Laske vektorien $(1,2,2)$ ja $(-1,2,2)$ välinen kulma.\ratkaisu{noin $63^\circ$}
+
+%\item Laske vektorien $\vu=(1,2,3)$ ja $\vw=(-7,2,1)$ välinen kulma.\ratkaisu{$90^\circ$}
+
+\item Laske tetraedrin tilavuus, kun sen kärjet ovat pisteissä $A=(2,1,-1)$, $B=(1,0,2)$, $C=(-1,-2,2)$ ja $D=(-1,2,-1)$.
+%\vihje{Tilavuuden voi laskea kaavalla $V=\pm\frac{1}{6}(\vu\times\vv)\cdot\vw$, missä vektorit $\vu$, $\vv$ ja $\vw$ ovat tetraedrin kolmen särmää.}\\
+\ratkaisuu{$(\vu\times\vv)\cdot\vw=-24$, joten $V=4$}
+
+\item Määritä pisteen $P=(2,2)$ etäisyys pisteiden $A=(1,-1)$ ja $B=(5,2)$ kautta kulkevasta suorasta.\\
+\emph{Vihje. Jos $\vn$ on suoran jokin normaalivektori ja $\vv=P-A$, niin etäisyys on luku $\vv\cdot\hatn$.}\\
+\ratkaisuu{suoran suuntavektori $\vu=(4,3)$, $\vn=(-3,4)$, $\hatn=(-0.6,0.8)$, $\vv=(1,3)$,\\ 
+etäisyys on $(1,3)\cdot(-0.6,0.8)=-0.6+2.4=1.8$.}
+
+\item (Muokattu.) Laske kompleksilukujen tulo
+$$
+(3-4i)(1+5i).
+$$\ratkaisu{$-17 + 19i$}
+
+\item Kirjoita kompleksiluku $z=5e^{i\pi/3}$ summamuodossa $z=x+iy$. (Luvuille $x$ ja $y$ riittää likiarvo.) \ratkaisu{$z\approx 2.50 + 4.33i$}
+
+\item Etsi toisen asteen yhtälön
+$$
+x^2-2x+2=0.
+$$
+kompleksiset ratkaisut.\ratkaisu{$x=1+i$ \textrm{ tai } $x=1-i$}
+\end{enumerate}
+
+\section*{Kaavoja (jatkuu kääntöpuolella)}
+
+\begin{equation*}
+\begin{split}
+(u_1,u_2,u_3)\cdot(v_1,v_2,v_3)
+&=u_1v_1+u_2v_2+u_3v_3,\qquad \frac{\pi}{3}=\frac{\pi}{3}\cdot\frac{180^\circ}{\pi}=60^\circ,\quad \vu=(a,b)\Rightarrow \vn=(b,-a)\quad \textrm{(Esim.)}\\
+|(u_1,u_2,u_3)|&=\sqrt{u_1^2+u_2^2+u_3^2},
+\quad \hatu=\frac{1}{|\vu|}\vu,
+\qquad (u_1,u_2,u_3)\times(v_1,v_2,v_3)
+=\begin{pmatrix}
+u_2v_3-u_3v_2\\
+u_3v_1-u_1v_3\\
+u_1v_2-u_2v_1
+\end{pmatrix}
+\\
+\cos\alpha&=\frac{\vu\cdot\vv}{|\vu||\vv|},
+\quad \theta=\arctan(y/x)\\
+V_S&=|(\vu\times\vv)\cdot\vw|,\quad
+V_P=\frac{1}{2}|(\vu\times\vv)\cdot\vw|,\quad
+V_T=\frac{1}{6}|(\vu\times\vv)\cdot\vw|,\quad
+A=|\vu\times\vv|\\
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+&\sqrt{-a}=\sqrt{a}\sqrt{-1}=i\sqrt{a},\quad i^2=-1\\
+&z^*=(x+iy)^*=x-iy,\quad |x+iy|=\sqrt{x^2+y^2}\\
+&\theta=\arctan(y/x),\quad e^{i\theta}=\cos(\theta)+i\sin(\theta)\\
+&\frac{z}{w}=\frac{zw^*}{|w|^2},\quad\textrm{eli}\quad
+\frac{a+bi}{c+di}
+=\frac{(a+bi)(c-di)}{(c+di)(c-di)}
+=\frac{(a+bi)(c-di)}{c^2+d^2}
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+\frac{a}{b}\bigg/\frac{c}{d}
+=\frac{a}{b}\cdot\frac{d}{c},\qquad
+ax^2+bx+c=0\quad&\Leftrightarrow\quad x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\\[2mm]
+\log_a(x)=y\quad&\Leftrightarrow\quad a^y=x
+\end{split}
+\end{equation*}
+
+
+$$
+\log_a(1)=0,\quad
+\log_a(a)=1,\quad
+\log_a(a^x)=x,\quad
+a^{\log_a(x)}=x
+$$
+
+\begin{equation*}
+\begin{split}
+\log_a(b^c)&=c\log_a(b)\\
+\log_a(xy)&=\log_a(x)+\log_a(y)\\
+\log_a\left(\frac{x}{y}\right)
+&=\log_a(x)-\log_a(y)\\
+\log_a(x)&=\frac{\log_b(x)}{\log_b(a)}
+\end{split}
+\end{equation*}
+
+$$
+\textrm{lb}(x)=\log_2(x),\quad
+\lg(x)=\log_{10}(x),\quad
+\ln(x)=\log_e(x),\quad
+e\approx 2,72
+$$
+
+\end{document}

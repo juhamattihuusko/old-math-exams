@@ -1,0 +1,180 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{xcolor}
+
+\usepackage[margin=1cm]{geometry}
+
+\title{OAMK}
+\author{Juha-Matti Huusko}
+\date{August 2023}
+
+%\renewcommand{\ratkaisu}[1]{}
+
+\newcommand{\hatu}{\hat{u}}
+\newcommand{\hatv}{\hat{v}}
+\newcommand{\hatw}{\hat{w}}
+\newcommand{\hatn}{\hat{n}}
+
+
+\newcommand{\vu}{\overline{u}}
+\newcommand{\vv}{\overline{v}}
+\newcommand{\vw}{\overline{w}}
+\newcommand{\vp}{\overline{p}}
+\newcommand{\vn}{\overline{n}}
+
+\newcommand{\va}{\overline{a}}
+\newcommand{\vb}{\overline{b}}
+\newcommand{\vc}{\overline{c}}
+
+\newcommand{\vi}{\hat{\imath}}
+\newcommand{\vj}{\hat{\jmath}}
+\newcommand{\vk}{\hat{k}}
+
+\newcommand{\ratkaisu}[1]{\hfill{\color{blue}\quad\textrm{Ratkaisu: } #1}}
+
+\newcommand{\ratkaisuu}[1]{{\color{blue}\textrm{Ratkaisu: } #1}}
+
+\renewcommand{\ratkaisu}[1]{}
+\renewcommand{\ratkaisuu}[1]{}
+
+\newcommand{\vihje}[1]{{\color{red}Vihje. #1}}
+\newcommand{\extra}[0]{\textbf{Extra.}~}
+
+\begin{document}
+\thispagestyle{empty}
+
+\section*{Koe 17.1.2024}
+%\section*{Loppukoe 20.10.2023}
+\paragraph*{Tietotekniikan sovellusprojekti IN00ED23-3001,\\ matematiikan osio, Vektorit ja kompleksilukujen perusteet (3op)}
+
+Derivaatan johtolaskuissa muutoksen kerroin antaa derivaatan lausekkeen. Esimerkiksi
+$$
+(x+h)^2=x^2+\underbrace{2x}_{=D x^2}h+h^2.
+$$
+Nimittäin
+$$
+D x^2=\lim_{h\to 0}\frac{(x+h)^2-x^2}{h}
+=\lim_{h\to 0}\frac{x^2+2xh+h^2-x^2}{h}
+=\lim_{h\to 0}2x+h=2x.
+$$
+Termi, jossa ei ollut yhtään muuttujaa $h$ kumoutui, ja termi, jossa oli $h^2$ tai $h^3$ jne. meni nollaan raja-arvoa ottaessa.
+
+Saman asian kertoo lineaarisen approksimaation kaava
+$$
+f(x+h)=f(x)+f'(x)h+h\underbrace{\varepsilon(h)},
+$$
+missä virhe $\varepsilon(h)\to 0$, kun $h\to 0$.
+
+\section{Derivointikaavojen johtoa}
+
+$$
+\sin(x+h)=\sin(x)\underbrace{\cos(h)}_{\approx 1-h^2/2}
++\cos(x)\underbrace{\sin(h)}_{\approx h}
+$$
+antaa $D\sin(x)=\cos(x)$
+
+$$
+\cos(x+h)=\cos(x)\underbrace{\cos(h)}_{\approx 1-h^2/2}-\sin(x)\underbrace{\sin(h)}_{\approx h}
+$$
+antaa $D\cos(x)=-\sin(x)$
+
+Jos $f(x)=C$ on vakiofunktio, niin
+$$
+f(x+h)=f(x)
+$$
+antaa $f'(x)=0$.
+
+Jos $f(x)=ax$, missä $a$ on vakio, niin
+$$
+f(x+h)=a(x+h)=ax+ah
+$$
+antaa $f'(x)=a$.
+
+Jos $f(x)=x^2$, niin
+$$
+(x+h)^2=x^2+2xh+h^2
+$$
+antaa $f'(x)=2x$.
+
+Jos $f(x)=x^3$, niin
+$$
+(x+h)^3=x^3+3x^2h+3xh^2+1
+$$
+antaa $D x^3=3x^2$.
+
+Jos $f(x)=x^n$, niin
+$$
+(x+h)^n=x^n+nx^{n-1}h+h^2(\ldots)
+$$
+antaa $D x^n=nx^{x-1}$.
+
+Jos $f(x)=ag(x)$, niin
+$$
+f(x+h)=ag(x+h)=ag(x)+ag'(x)h+ah\varepsilon(h)
+$$
+antaa $f'(x)=ag'(x)$.
+
+Jos $f(x)=g(ax)$, niin
+$$
+f(x+h)=g(a(x+h))=g(ax+ah)
+=g(ax)+g'(ax)ah+ah\varepsilon(ah)
+$$
+antaa $Dg(ax)=ag'(x)$
+
+Yhdistetylle funktiolle $f(g(x))$
+$$
+\frac{f(g(x+h))-f(g(x))}{h}
+=\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}
+\cdot\frac{g(x+h)-g(x)}{h}
+$$
+antaa $Df(g(x))=f'(g(x))g'(x)$.
+
+Funktiolle $g(x)$ ja käänteisfunktiolle $g^{-1}(x)=f(x)$ pätee 
+$$
+f(g(x))=x
+$$
+puolittain derivoimalla
+$$
+f'(g(x))g'(x)=1
+$$
+jakamalla luvulla $f'(g(x))$
+$$
+g'(x)=\frac{1}{f'(g(x))}
+$$
+Siis
+$$
+(f^{-1})'(x)=\frac{1}{f'(f^{-1}(x))}
+$$
+
+Jos $a>0$, niin funktiolle $f(x)=a^x$ kaava
+$$
+\frac{a^{x+h}-a^x}{h}
+=\frac{a^{x}a^{0+h}-a^{x}a^{0}}{h}
+=a^x\frac{a^{0+h-a^0}}{h}
+$$
+antaa $f'(x)=f(x)\cdot f'(0)$.
+
+\subsection{Luvun $e$ määritelmä}
+
+Saatiin, että funktiolle $f(x)=a^x$ pätee $f'(x)=f(x)\cdot f'(0)$. Luku $f'(0)$ riippuu vain kantaluvusta $a$. Mitä suurempi $a$, sitä suurempi $f'(0)$.
+
+Asetetaan, että $e$ on se luku, jolle $f'(0)=1$. Saadaan $De^x=e^x$.
+
+Funktiolle $f(x)=e^x$ käänteisfunktio on $f^{-1}(x)=\ln(x)$, sen derivaatta
+$$
+D\ln(x)=\frac{1}{e^{\ln(x)}}=\frac{1}{x}.
+$$
+Kaava $D\ln(x)=\frac{1}{x}$ on todella yksinkertainen.
+
+Koska integrointi on derivoinnin käänteisoperaatio, seuraa
+$$
+\int_1^e\frac{1}{x}dx=\ln(e)-\ln(1)=1-0=1.
+$$
+(Manne pitää tästä luvun $e$ määritelmästä.)
+
+Luvulle $e$ nähtiin hetkessä kolme hienoa ominaisuutta. Sen vuoksi $e$ on kätevä ja luonnollinen monessa yhteydessä. Hienoja kaavoja löytyy paljon lisää.
+
+
+
+\end{document}

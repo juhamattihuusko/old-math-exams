@@ -1,0 +1,227 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{xcolor}
+\usepackage{tasks}
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\title{OAMK}
+\author{Juha-Matti Huusko}
+\date{August 2023}
+
+\newcommand{\ratkaisu}[1]{{\color{blue}\quad\textrm{Solution } #1}}
+
+%\renewcommand{\ratkaisu}[1]{}
+
+\begin{document}
+\thispagestyle{empty}
+
+\section*{Additional physics problems for your self study in case you are interested}
+%\section*{Uusintakoe 17.11.2023}
+%\section*{Loppukoe 20.10.2023}
+
+On 25.2.2025, some students were asking for more problems in physics.\\
+
+\noindent Here are some problems which you can practice if you like. This file was compiled in the same day and can contain misprints.
+
+\begin{enumerate}
+\item A mass $m=2~kg$ falls in vacuum. Only force is the gravitation of Earth. The initial position $y(0)=0$ and the initial velocity $y'(0)=0$. Which differential equation does the mass satisfy?  How long distance will the mass travel in 3~s?
+
+\item A mass $m$ rests on a frictionless horizontal rail. The mass is attached to a wall with a spring (spring constant $k$). Let $y(t)$ be the displacement of the mass from the equilibrium point. Assume that $y(0)=0.3~m$ and $y'(0)=0~m/s$. Which differential equation does the mass satisfy? At which time does the mass, for the first time, pass the equilibrium point?
+
+\item Consider a radioactive isotope. Denote the number of particles of the isotope with $y(t)$. Let $y(0)=100$ and $y(3)=50$. Which differential equation does the isotope satisfy? For which value of $t$ we have $y(t)=12$?
+
+\item In a pendulum, a mass $m=1~kg$ is hanged in a rope of length $L=1~m$. Let $\theta(t)$ be the displacement angle from the neutral position. Assume that $\theta(0)=5^\circ$ and $\theta'(0)=0$. Which differential equation does $\theta(t)$ satisfy? In which time does the pendulum complete a full swing back and forth?
+\end{enumerate}
+
+\end{document}
+
+\newpage
+\section*{Formulas}
+\subsection*{Differentiation and integration}
+
+$$
+\begin{array}{rl|rl}
+\textbf{Differentiation} && \textbf{Integration}&\\[2mm]
+Dx^n&=nx^{n-1}     \qquad\qquad&\qquad\qquad\int x^ndx&=\frac{x^{n+1}}{n+1}+C \\[2mm]
+De^x&=e^x &\int e^xdx&=e^x+C\\[2mm]
+Db^x&=b^x\ln(b) & \int b^xdx&=\frac{b^x}{\ln(b)}\\[2mm]
+D\ln(x)&=\frac{1}{x} &&\\[2mm]
+D\ln|x|&=\frac{1}{x} &\int\frac{1}{x}dx&=\ln|x|+C\\[2mm]
+D\log_a(x)&=\frac{1}{x\ln(a)} &&\\[2mm]
+D\log_a|x|&=\frac{1}{x\ln(a)} &&\\[2mm]
+D\sin(x)&=\cos(x)   &\int\cos(x)dx&=\sin(x)+C\\[2mm]
+D\cos(x)&=-\sin(x)  &\int\sin(x)dx&=-\cos(x)+C\\[2mm]
+D\tan(x)&=1+\tan^2(x) \qquad&\qquad\int 1+\tan^2(x)dx&=\tan(x)+C\\[2mm]
+
+Dx\ln(x)-x&=\ln(x) & \int\ln(x)dx&=x\ln(x)-x+C\\[10mm]
+
+D\arcsin(x)&=\frac{1}{\sqrt{1-x^2}} & \int\frac{1}{\sqrt{1-x^2}}&=\arcsin(x)+C\\
+D\arccos(x)&=\frac{1}{-\sqrt{1-x^2}} & \int\frac{1}{-\sqrt{1-x^2}}&=\arccos(x)+C\\
+D\arctan(x)&=\frac{1}{1+x^2} & \int\frac{1}{1+x^2}&=\arctan(x)+C\\
+
+D\sinh(x)&=\cosh(x) &&\\
+D\cosh(x)&=\sinh(x) &&\\
+D\tanh(x)&=\frac{1}{\cosh^2(x)} &&\\
+\end{array}  
+$$
+\vspace{1cm}
+$$
+\begin{array}{rl|rl}
+\textbf{Differentiation} && \textbf{Integration}&\\[2mm]
+D f(g(x))&=f'(g(x))g'(x) & \int f(g(x))g'(x)dx&=f(g(x))+C\\[2mm]
+\textrm{Special cases} &&&\\
+D\ln(g(x))&=\frac{g'(x)}{g(x)} & \int \frac{g'(x)}{g(x)}dx&=\ln(g(x))+C\\[2mm]
+D e^{g(x)}&=e^{g(x)}g'(x) & \int g'(x)e^{g(x)}dx&=e^{g(x)}+C\\[10mm]
+D fg&=f'g+fg'& \int f'g dx&=fg-\int fg'dx\\[2mm]
+D (f/g)&=(gf'-fg')/g^2 &&\\[2mm]
+\end{array}  
+$$
+
+\newpage
+
+\subsection*{Physics}
+
+\subsubsection*{Newtonian mechanics}
+
+Some forces
+\begin{itemize}
+\item $G=mg$ (gravitation)
+\item $F=kx$ (spring)
+\item $F=av^2$ (air resistance)
+\end{itemize}
+Differential equation is given by Newton's second law
+$$
+F_{\textrm{total}}=mx''.
+$$
+
+\subsubsection*{Lagrangian mechanics}
+Lagrange function is the difference of kinetic energy and potential energy. As a formula, $L=T-U$ or $L=K-P$
+\begin{itemize}
+\item Object in free fall $L=\frac12 my''-mgy$
+\item Pendulum $L=\frac12 mL^2\theta'(t)-mgL(1-\cos(\theta(t)))$
+\item Mass and spring $L=\frac12 mx'(t)^2-\frac12 kx(t)^2$
+\end{itemize}
+Differential equation is given by Euler-Lagrange equation
+$$
+\frac{d}{dt}\left(\frac{\partial L}{\partial x'}\right)-\frac{\partial L}{\partial x}=0.
+$$
+
+\subsubsection*{Other differential equations}
+
+\begin{itemize}
+\item Radioactive decay $N'(t)=-aN(t)$
+\item Newton's law of cooling $T'(t)=-k(T(t)-T_a)$
+\end{itemize}
+
+\newpage
+\subsection*{Differential equations}
+\subsubsection*{Second order linear ODE with constant coefficients}
+
+\begin{itemize}
+\item ODE $y''+by'+cy=0$
+\item Characteristic equation $r^2+br+c=0$
+\end{itemize}
+Cases
+\begin{itemize}
+\item $r_1,r_2\in\mathbb{R}$ solution
+$$
+y(x)=A\exp(r_1x)+B\exp(r_2x)
+$$
+\item $r_1=r_2=r$ solution
+$$
+y(x)=A\exp(rx)+Bx\exp(rx)
+$$
+\item $r_1=a+bi$ solution
+$$
+y(x)=\exp(ax)(A\cos(bx)+B\sin(bx))
+$$
+\end{itemize}
+
+\subsubsection*{Integrable ODE}
+The solution of
+$$
+y'=q(x)
+$$
+is $y(x)=\int q(x)dx$
+
+\subsubsection*{Separable ODE}
+If you can arrange the equation as $$a(y)dy=b(x)dx,$$
+then you can integrate to obtain $$\int a(y)dy=\int b(x)dx.$$
+
+\subsubsection*{First order linear ODE}
+The solution of
+$$
+y'+p(x)y=q(x)
+$$
+is
+$$
+y(x)=\frac{C}{\mu(x)}+\frac{1}{\mu(x)}\int \mu(x)q(x)dx,\quad\textrm{where}\quad
+\mu(x)=e^{\int p(x)dx}.
+$$
+
+\newpage
+\subsection*{Fourier series}
+
+If $f$ is periodic with period $2\pi$ and $f$, $f'$ and $f''$ are piece-wise continuous, then
+$$
+f(x)
+=\frac{a_0}{2}
++\sum_{n=1}^\infty a_n\cos(nx)+b_n\sin(nx),
+$$
+where
+\begin{equation*}
+\begin{split}
+a_0&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)dx\\
+a_n&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)\cos(nx)dx\\
+b_n&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)\sin(nx)dx\\
+\end{split}
+\end{equation*}
+Moreover, if $f$ is odd, that is, $f(-x)=-f(x)$,
+then
+$$
+f(x)
+=\sum_{n=1}^\infty b_n\sin(nx),
+$$
+and if $f$ is even, that is, $f(-x)=f(x)$, then
+$$
+f(x)
+=\frac{a_0}{2}
++\sum_{n=1}^\infty a_n\cos(nx)
+$$
+
+\subsection*{Discrete Fourier transform / FFT}
+
+Transform and inverse transform
+$$
+\begin{cases}
+y_0&=x_0+x_1\\
+y_1&=x_0-x_1
+\end{cases},\quad
+\begin{cases}
+y_0&=\frac{1}{2}(x_0+x_1)\\
+y_1&=\frac{1}{2}(x_0-x_1)
+\end{cases}
+$$
+Transform and inverse transform
+$$
+\begin{cases}
+y_0&=x_0+x_1+x_2+x_3\\
+y_1&=x_0-ix_1-x_2+ix_3\\
+y_2&=x_0-x_1+x_2-x_3\\
+y_3&=x_0+ix_1-x_2-ix_3\\
+\end{cases},\quad
+\begin{cases}
+y_0&=\frac{1}{4}(x_0+x_1+x_2+x_3)\\
+y_1&=\frac{1}{4}(x_0+ix_1-x_2-ix_3)\\
+y_2&=\frac{1}{4}(x_0-x_1+x_2-x_3)\\
+y_3&=\frac{1}{4}(x_0-ix_1-x_2+ix_3)\\
+\end{cases}
+$$
+
+
+\end{document}

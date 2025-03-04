@@ -1,0 +1,369 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{xcolor}
+\usepackage{tasks}
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\newcommand{\sqbrac}[1]{\left[#1\right]}
+
+\title{OAMK}
+\author{Juha-Matti Huusko}
+\date{August 2023}
+
+\newcommand{\ratkaisu}[1]{{\color{blue}\quad\textrm{Solution. } #1}}
+
+%\renewcommand{\ratkaisu}[1]{}
+
+\newcommand{\huomautus}[1]{{\color{magenta}\quad\textrm{Note. } #1}}
+
+\begin{document}
+\thispagestyle{empty}
+
+\section*{Exam 27.2.2025, solutions\quad\quad Name:}
+%\section*{Uusintakoe 17.11.2023}
+%\section*{Loppukoe 20.10.2023}
+\subsection*{Applied Mathematics and Physics in Programming ID00CS50-3003}
+
+Answer to all six questions.
+
+\begin{enumerate}
+\item Match each of the differential equations
+\begin{enumerate}[label=(\roman*)]
+\item [(E1)] $y'''+4xy'+4y=0$ %ORDER 3
+\item [(E2)] $y''+4y'+4y=0$ %CONSTANT COEFF
+\item [(E3)] $y'-\tan(x)y=0$ %SEP
+\item [(E4)] $y''+x\sin(y)=y$ %NONLIN
+\item [(E5)] $y''+xy'+4y=x^2$ %NON-HOMO
+\end{enumerate}
+with one of the following properties. (One equation for one property. No need to justify the answer.) \huomautus{You get 1p from each part.}
+\begin{enumerate}
+\item Which equation is separable?\ratkaisu{(E3), equation (E3) does not satisfy any of the properties (b)-(e)}
+\item Which equation is of order 3?\ratkaisu{(E1), only equation with $y'''$}
+\item Which equation has constant coefficients?\ratkaisu{(E2)}
+\item Which equation is linear and non-homogeneous?\ratkaisu{(E5)}
+\item Which equation is nonlinear?\ratkaisu{(E4)}
+\end{enumerate}
+
+
+
+\item Match each of the differential equations
+\begin{enumerate}
+\item [(F1)] $my''=-mg$ %falling
+\item [(F2)] $y'=-ay$ %radioactive
+\item [(F3)] $my''+ky=0$ %harmonic
+\item [(F4)] $my''+Ry'+ky=0$ %harmonic with damping
+\item [(F5)]  $y''+\sin(y)=0$ %pendulum
+\end{enumerate}
+with one of the following physics phenomena. (One equation for one phenomenon. No need to justify the answer.) \huomautus{You get 1p from each part.}
+
+\begin{enumerate}
+\item Which equation is about radioactive decay?\ratkaisu{(F2), it has no oscillating solutions}
+\item Which equation is about pendulum?\ratkaisu{(F5), this was the nonlinear equation which we could not solve by hand}
+\item Which equation is about free fall?\ratkaisu{(F1), $g$ is the gravity constant}
+\item Which equation is about harmonic oscillator (mass and spring) without damping?\ratkaisu{(F3), its solution is $y(x)=A\sin(\omega t+\varphi)$ which oscillates forever.}
+\item Which equation is about harmonic oscillator with damping?\ratkaisu{(F4)}
+
+\end{enumerate}
+
+\item Find the general solution of $y'=6x+2$.\ratkaisu{$y(x)=3x^2+2x+C$}
+
+Find the particular solution which satisfies the initial condition $y(0)=3$.\ratkaisu{$y(x)=3x^2+2x+3$}
+
+For this particular solution, find $y(2)$.\ratkaisu{$19$}
+
+\huomautus{The problem is graded as whole. Depending on the explanation / Points are given with the idea $1.6+1.6+1.6$ and then rounded up.}
+
+\item A mass ($m=1~kg$) lies on a frictionless rail. The mass is connected to the end of the rail with a spring ($k=25~kg/s^2$). The position of the mass at time t is described by the function
+$x(t)=A\cos(\omega t)+B\sin(\omega t)$.
+
+A person pulls the mass $0.25~m$ from the neutral position. At the moment $t=0$, we have $x(0)=0.25$ and $x'(0)=0$. The person releases the mass and the mass will oscillate back and forth.
+
+\ratkaisu{By the initial conditions, we have
+$$
+x(0)=A\cdot 1+B\cdot 0=A=0.25
+$$
+and since $x'(t)=-A\omega\sin(\omega t)+B\omega\cos(\omega t)$ we have also
+$$
+x'(0)=-A\omega\cdot 0+B\omega\cdot 1=B=0.
+$$
+The particular solution which satisfies the initial conditions is $x(t)=0.25\cos(\omega t)$.
+
+From problem 2, we copy the differential equation $mx''+kx=0$. Our particular solution has second derivative $x''(t)=-0.25\omega^2 x(t)$. We have
+$$
+mx''+kx=0.25(-m\omega^2+k)x(t)=0
+$$
+if $-m\omega^2+k=0$ which yields $\omega=\sqrt{k/m}=\sqrt{1/25}=\frac15$.
+}
+
+\textbf{Tasks.}
+\begin{enumerate}
+\item Express $\omega$ in terms of $k$ and $m$. \ratkaisu{$\omega=\sqrt{k/m}$}
+\item When does the mass for the first time return to the starting position?
+\ratkaisu{We have $x(t)=0.25\cos(\omega t)=0.25$ for some $t>0$. It must be $\cos(\omega t)=1$. Hence, $\omega t=2\pi n$ for $n=1$. We have $\frac15 t=2\pi$ implying $t=10\pi$.}
+% (x(t)=x(0)) => t=4pi
+\item What is the maximum velocity of the mass?\ratkaisu{Because there is no damping, the energy is preserved. In the neutral position, the system has only kinetic energy. Assuming that the spring has no mass, the kinetic energy is only in the mass. The kinetic energy $\frac12 mv^2$ is equal to the potential energy $\frac12 kx^2$ in the beginning. We get
+$$
+mv^2=kx(0)^2
+$$
+Implying
+$v=\sqrt{\frac{k}{m}}x(0)=\omega x(0)=\frac15 0.25m=0.05~m/s$.
+}
+
+\huomautus{The problem is graded as whole. Depending on the explanation / Points are given with the idea $1.6+1.6+1.6$ and then rounded up.}
+
+% => 0.125m/s
+\end{enumerate}
+
+\item Consider the equation
+$$
+y'-2\tan(x)y=x.
+$$
+Solve it, for example, by following the instructions.\huomautus{You get 1p from each part.}
+\begin{enumerate}
+\item Identify $p(x)$ and $q(x)$.\ratkaisu{$p(x)=-2\tan(x)$ and $q(x)=x$}
+\item Calculate $\int p(x)dx$. Don't add a constant $C$ yet.\ratkaisu{$\int p(x)dx=\ln(\cos^2(x))$}
+\item Simplify $\mu(x)=e^{\int p(x)dx}$ and $\frac{1}{\mu(x)}$\ratkaisu{$\mu(x)=\cos^2(x)$ and $\frac{1}{\mu(x)}=\frac{1}{\cos^2(x)}$}
+\item Calculate $\int \mu(x)q(x)dx$.
+\ratkaisu{We need to integrate
+$$
+\int x\cos^2(x)dx
+$$
+Choosing $x=a=b$ in
+$$
+2\cos(a)\cos(b)=\cos(a-b)+\cos(a+b)
+$$
+we obtain $\cos^2(x)=\frac12(1+\cos(2x))$ and need to integrate
+$$
+I=\frac12\int x(1+\cos(2x))dx.
+$$
+We have
+$$
+I=\frac{x^2}{4}+\frac12\int x\cos(2x)dx.
+$$
+Partial integration gives
+$$
+\int x\cdot \cos(2x)dx
+=x\cdot \sin(2x)/2-\int 1\cdot \sin(2x)/2 dx
+=x\sin(2x)/2+\cos(2x)/4.
+$$
+We have
+$$
+\int x\cos^2(x)dx
+=\frac{2x^2+2x\sin(2x)+\cos(2x)}{8}.
+$$
+}
+\item The solution is $y(x)=\frac{C}{\mu(x)}+\frac{1}{\mu(x)}\int \mu(x)q(x)dx$.
+\ratkaisu{$y(x)=\frac{C}{\cos^2(x)}+\frac{2x^2+2x\sin(2x)+\cos(2x)}{8\cos^2(x)}$}
+\end{enumerate}
+
+\item Consider the $2\pi$ periodic function $f$ which satisfies $f(x)=|x|$ for $-\pi<x<\pi$.
+
+Which of the Fourier coefficients $a_0$, $a_1$, $a_2$, $b_1$, $b_2$ are zero?
+\huomautus{You get 1p from each $a_1$, $a_2$, $b_1$, $b_2$. Extra points for smart approach.}
+
+
+\ratkaisu{Because $f(-x)=|-x|=|x|=f(x)$, the function $f$ is even which implies that $b_1=b_2=0$.
+
+We have
+$$
+a_0=\frac{2}{\pi}\int_0^\pi xdx
+=2\pi\neq 0.
+$$
+Also
+$$
+a_1=\frac{2}{\pi}\int_0^\pi x\cos(x)dx
+=\frac{2}{\pi}\sqbrac{x\sin(x)+\cos(x)}_{x=0}^{x=\pi}
+=\frac{2}{\pi}[\cos(\pi)-\cos(0)]
+=-\frac{2}{\pi}\neq 0.
+$$
+Moreover,
+$$
+a_2=\frac{2}{\pi}\int_0^\pi x\cos(2x)dx
+=\frac{2}{\pi}\sqbrac{\frac{x\sin(2x)}{2}+\frac{\cos(2x)}{4}}_{x=0}^{x=\pi}
+=\frac{1}{2\pi}[\cos(2\pi)-\cos(0)]=0.
+$$
+In conclusion, we have that $a_2=b_1=b_2=0$ and $a_0\neq 0$ and $a_1\neq 0$.}
+
+\end{enumerate}
+
+%Because the function is even, we have b_1=0 and b_2=0.
+
+%a_0 =/= 0
+%a_1 =/= 0
+%a_2 =0
+%Moreover, a_0=2\int_0^\pi xdx=pi^2
+
+%a_1=-4
+%a_2=0
+%a_2,b1,b2 <=
+
+\newpage
+\section*{Formulas}
+\subsection*{Differentiation and integration}
+
+$$
+\begin{array}{rl|rl}
+\textbf{Differentiation} && \textbf{Integration}&\\[2mm]
+Dx^n&=nx^{n-1}     \qquad\qquad&\qquad\qquad\int x^ndx&=\frac{x^{n+1}}{n+1}+C \\[2mm]
+De^x&=e^x &\int e^xdx&=e^x+C\\[2mm]
+Db^x&=b^x\ln(b) & \int b^xdx&=\frac{b^x}{\ln(b)}\\[2mm]
+D\ln(x)&=\frac{1}{x} &&\\[2mm]
+D\ln|x|&=\frac{1}{x} &\int\frac{1}{x}dx&=\ln|x|+C\\[2mm]
+D\log_a(x)&=\frac{1}{x\ln(a)} &&\\[2mm]
+D\log_a|x|&=\frac{1}{x\ln(a)} &&\\[2mm]
+D\sin(x)&=\cos(x)   &\int\cos(x)dx&=\sin(x)+C\\[2mm]
+D\cos(x)&=-\sin(x)  &\int\sin(x)dx&=-\cos(x)+C\\[2mm]
+D\tan(x)&=1+\tan^2(x) \qquad&\qquad\int 1+\tan^2(x)dx&=\tan(x)+C\\[2mm]
+
+Dx\ln(x)-x&=\ln(x) & \int\ln(x)dx&=x\ln(x)-x+C\\[10mm]
+
+D\arcsin(x)&=\frac{1}{\sqrt{1-x^2}} & \int\frac{1}{\sqrt{1-x^2}}&=\arcsin(x)+C\\
+D\arccos(x)&=\frac{1}{-\sqrt{1-x^2}} & \int\frac{1}{-\sqrt{1-x^2}}&=\arccos(x)+C\\
+D\arctan(x)&=\frac{1}{1+x^2} & \int\frac{1}{1+x^2}&=\arctan(x)+C\\
+
+D\sinh(x)&=\cosh(x) &&\\
+D\cosh(x)&=\sinh(x) &&\\
+D\tanh(x)&=\frac{1}{\cosh^2(x)} &&\\
+\end{array}  
+$$
+\vspace{1cm}
+$$
+\begin{array}{rl|rl}
+\textbf{Differentiation} && \textbf{Integration}&\\[2mm]
+D f(g(x))&=f'(g(x))g'(x) & \int f'(g(x))g'(x)dx&=f(g(x))+C\\[2mm]
+\textrm{Special cases} &&&\\
+D\ln(g(x))&=\frac{g'(x)}{g(x)} & \int \frac{g'(x)}{g(x)}dx&=\ln(g(x))+C\\[2mm]
+D e^{g(x)}&=e^{g(x)}g'(x) & \int g'(x)e^{g(x)}dx&=e^{g(x)}+C\\[10mm]
+D fg&=f'g+fg'& \int f'g dx&=fg-\int fg'dx\\[2mm]
+D (f/g)&=(gf'-fg')/g^2 &&\\[2mm]
+\end{array}  
+$$
+
+\newpage
+
+
+
+\newpage
+\subsection*{Differential equations}
+\subsubsection*{Second order linear ODE with constant coefficients}
+
+\begin{itemize}
+\item ODE $y''+by'+cy=0$
+\item Characteristic equation $r^2+br+c=0$
+\end{itemize}
+Cases
+\begin{itemize}
+\item $r_1,r_2\in\mathbb{R}$ solution
+$$
+y(x)=A\exp(r_1x)+B\exp(r_2x)
+$$
+\item $r_1=r_2=r$ solution
+$$
+y(x)=A\exp(rx)+Bx\exp(rx)
+$$
+\item $r_1=a+bi$ solution
+$$
+y(x)=\exp(ax)(A\cos(bx)+B\sin(bx))
+$$
+\end{itemize}
+
+\subsubsection*{Integrable ODE}
+The solution of
+$$
+y'=q(x)
+$$
+is $y(x)=\int q(x)dx$
+
+\subsubsection*{Separable ODE}
+If you can arrange the equation as $$a(y)dy=b(x)dx,$$
+then you can integrate to obtain $$\int a(y)dy=\int b(x)dx.$$
+
+\subsubsection*{First order linear ODE}
+The solution of
+$$
+y'+p(x)y=q(x)
+$$
+is
+$$
+y(x)=\frac{C}{\mu(x)}+\frac{1}{\mu(x)}\int \mu(x)q(x)dx,\quad\textrm{where}\quad
+\mu(x)=e^{\int p(x)dx}.
+$$
+
+\section*{Trigonometry}
+
+\begin{equation*}
+\begin{split}
+\sin(a+b)&=\sin(a)\cos(b)+\cos(a)\sin(b)\\
+\cos(a+b)&=\cos(a)\cos(b)-\sin(a)\sin(b)\\
+2\sin(a)\sin(b) &= \cos(a-b)-\cos(a+b)\\
+2\sin(a)\cos(b) &= \sin(a-b)+\sin(a+b)\\
+2\cos(a)\cos(b) &= \cos(a-b)+\cos(a+b)\\
+\end{split}
+\end{equation*}
+
+\newpage
+\subsection*{Fourier series}
+
+If $f$ is periodic with period $2\pi$ and $f$, $f'$ and $f''$ are piece-wise continuous, then
+$$
+f(x)
+=\frac{a_0}{2}
++\sum_{n=1}^\infty a_n\cos(nx)+b_n\sin(nx),
+$$
+where
+\begin{equation*}
+\begin{split}
+a_0&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)dx\\
+a_n&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)\cos(nx)dx\\
+b_n&=\frac{1}{\pi}\int_{-\pi}^{\pi}
+f(x)\sin(nx)dx\\
+\end{split}
+\end{equation*}
+Moreover, if $f$ is odd, that is, $f(-x)=-f(x)$,
+then
+$$
+f(x)
+=\sum_{n=1}^\infty b_n\sin(nx),
+$$
+and if $f$ is even, that is, $f(-x)=f(x)$, then
+$$
+f(x)
+=\frac{a_0}{2}
++\sum_{n=1}^\infty a_n\cos(nx)
+$$
+
+\subsection*{Discrete Fourier transform / FFT}
+
+Transform and inverse transform
+$$
+\begin{cases}
+y_0&=x_0+x_1\\
+y_1&=x_0-x_1
+\end{cases},\quad
+\begin{cases}
+y_0&=\frac{1}{2}(x_0+x_1)\\
+y_1&=\frac{1}{2}(x_0-x_1)
+\end{cases}
+$$
+Transform and inverse transform
+$$
+\begin{cases}
+y_0&=x_0+x_1+x_2+x_3\\
+y_1&=x_0-ix_1-x_2+ix_3\\
+y_2&=x_0-x_1+x_2-x_3\\
+y_3&=x_0+ix_1-x_2-ix_3\\
+\end{cases},\quad
+\begin{cases}
+y_0&=\frac{1}{4}(x_0+x_1+x_2+x_3)\\
+y_1&=\frac{1}{4}(x_0+ix_1-x_2-ix_3)\\
+y_2&=\frac{1}{4}(x_0-x_1+x_2-x_3)\\
+y_3&=\frac{1}{4}(x_0-ix_1-x_2+ix_3)\\
+\end{cases}
+$$
+
+
+\end{document}

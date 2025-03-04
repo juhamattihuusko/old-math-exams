@@ -1,0 +1,118 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{xcolor}
+\usepackage{tasks}
+%\usepackage{enumitem}
+\usepackage[margin=1cm]{geometry}
+\usepackage{tkz-euclide}
+\usepackage{multicol}
+\usepackage{pgfplots}
+\usetikzlibrary{calc}
+\usepackage{ifthen}
+
+%0 reaali
+%1 kompleksi
+\def\mode{0}
+%\def\mode{1}
+
+\input{komennot}
+
+\title{OAMK}
+\author{Juha-Matti Huusko}
+\date{August 2023}
+
+\renewcommand{\ratkaisu}[1]{{\color{blue}\quad\textrm{Ratkaisu: } #1}}
+
+\renewcommand{\ratkaisu}[1]{}
+
+\newcommand{\yksikkoympyra}[2]{
+\def\mode{#1}
+\begin{tikzpicture}[scale=0.7]
+
+\foreach \r in {1,2,...,9} {
+\draw (0,0) circle (\r cm);
+}
+
+\foreach \a in {10,20,...,80,100,110,...,170,190,200,...,260,280,290,...,350} {
+\draw (\a:1)--(\a:10);
+}
+
+\begin{scope}
+\draw[clip] (0,0) circle (10cm);
+\draw[gray] (-10,-10) grid (10,10);
+\end{scope}
+
+\fill[fill=white, opacity=0.8] (-10,-1) rectangle (10,0);
+\fill[fill=white, opacity=0.8] (-1,-10) rectangle (0,10);
+
+
+\draw (0,0) circle (10 cm);
+
+\foreach \r in {2,...,9} {
+%\filldraw (\r,0) circle (2pt) node[below]{$\frac{\r}{10}$};
+%\filldraw (-\r,0) circle (2pt) node[below]{$\frac{-\r}{10}$};
+\filldraw (\r,0) circle (2pt) node[below]{$\r$};
+\filldraw (-\r,0) circle (2pt) node[below]{$-\r$};
+}
+
+\pgfkeys{/pgf/number format/.cd,fixed,precision=2}
+
+%reaali
+\ifthenelse{\mode=0}{
+\foreach \r in {2,3,...,9} {
+\filldraw (0,\r) circle (2pt) node[left]{$\r$};
+\filldraw (0,-\r) circle (2pt) node[left]{$-\r$};
+}
+%\filldraw (0,-10) circle (2pt) node[below left]{$-1$};
+%\filldraw (0,10) circle (2pt) node[below left]{$1$};
+\foreach \a in {10,20,...,80,100,110,...,170,190,200,...,260,280,290,...,350} {
+\path (\a:1)--(\a:10) (\a:12) node[above, rotate=\a]{$\a^\circ\approx\pgfmathparse{\a*3.1516/180}\pgfmathprintnumber{\pgfmathresult}$};
+}}{}
+
+%kompleksi
+\ifthenelse{\mode=1}{
+\foreach \r in {2,3,...,10} {
+\filldraw (0,\r) circle (2pt) node[left]{$\r i$};
+\filldraw (0,-\r) circle (2pt) node[left]{$-\r i$};
+}
+%\filldraw (0,-10) circle (2pt) node[below left]{$-i$};
+%\filldraw (0,10) circle (2pt) node[below left]{$i$};
+
+\foreach \a in {10,20,...,80,100,110,...,170,190,200,...,260,280,290,...,350} {
+\path (\a:1)--(\a:10) (\a:11) node[above, rotate=\a]{$e^{i\a^\circ}$};
+}
+}{}
+
+#2
+
+\end{tikzpicture}
+}
+
+\begin{document}
+
+\section*{Yksikköympyrä}
+
+\begin{itemize}
+\item Ruudukon mittakaava on kymmenkertainen, jotta voitiin kirjoittaa ``4'' eikä ``0.4''.
+\item Kulmat asteina ja radiaaneina, esim. $10^\circ\approx 0.18$.
+\end{itemize}
+
+Kolme esimerkkiä
+
+\yksikkoympyra{1}{
+\draw[very thick, red] (0,0)--(7.071,0)--(7.071,7.071)--cycle;
+\draw[very thick, red] (0,0)--(8.66,0)--(8.66,5)--cycle;
+\draw[very thick, red] (0,0)--(4,0)--(4,3)--cycle;
+}
+
+Kolme esimerkkiä
+
+\yksikkoympyra{0}{
+\draw[very thick, red] (0,0)--(7.071,0)--(7.071,7.071)--cycle;
+\draw[very thick, red] (0,0)--(8.66,0)--(8.66,5)--cycle;
+\draw[very thick, red] (0,0)--(4,0)--(4,3)--cycle;
+}
+
+
+\end{document}

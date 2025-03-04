@@ -1,0 +1,124 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{xcolor}
+\usepackage{tasks}
+%\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+\usepackage{tkz-euclide}
+
+\input{komennot}
+
+\newcommand{\lt}[0]{<}
+\newcommand{\gt}[0]{>}
+\newcommand{\lb}[0]{\operatorname{lb}}
+
+\title{OAMK}
+\author{Juha-Matti Huusko}
+\date{August 2023}
+
+\renewcommand{\ratkaisu}[1]{{\color{blue}\quad\textrm{Ratkaisu: } #1}}
+
+\renewcommand{\ratkaisu}[1]{}
+
+\begin{document}
+\thispagestyle{empty}
+
+\section*{Logarithms}
+
+\subsection*{Definition}
+Let's consider the curve \(a^x=y\) for \(a\gt 0\). Let's restrict to \(a\gt 1\) so that the function \(a^x\) is strictly increasing.\footnote{If \(a=1\), we have \(a^x=1^x=1\) for all \(x\); the function is constant which is not interesting.
+
+Moreover, if \(0\lt a\lt 1\), we can substitute \(b=\frac{1}{a}\gt 1\) and \(-x=t\) to get \(a^x=\frac{1}{b^x}=b^{-x}=b^t=y\) and consider \(b^t=y\).)
+
+So, let's consider the curve \(a^x=y\) for \(a\gt 1\).}
+
+From the graph, we see that if we solve for \(x\), we find exactly one solution. Therefore, we can make the definition
+\begin{enumerate}
+    \item [(1)]\(a^x=y\) if and only if
+    \item [(2)]\(\log_a(y)=x\)
+\end{enumerate}
+By combining (1) and (2) we obtain
+$$
+a^{\log_a(y)=y},\quad \log_a(a^x)=x.
+$$
+
+\noindent\textbf{Example.} (a) We have \(2^3=8\) so \(\log_2(8)=3\).
+
+\noindent (b) Taking power \(\frac{1}{3}\) on both sides of \(2^3=8\), we obtain \(8^{\frac{1}{3}}=2\). Therefore \(\log_8(2)=\frac{1}{3}\) demonstrating the rule \(\log_a(c)=\frac{1}{\log_c(a)}\).\\[2mm]
+
+Which base \(a\) to use for \(\log_a(x)\)? Perhaps the most important logarithms are \(\lg(x)=\log_{10}(x)\), \(\lb(x)=\log_2(x)\) and \(\ln(x)=\log_e(x)\), where \(e\approx 2.71828\).\footnote{First two are because humans use the base \(10\) number system (decimal numbers) and computers use base \(2\) number system (binary numbers).  Moreover, for \(e\approx 2.71828\), the curve \(e^x=y\) has slope \(1\) at \(x=0\). Because of this, many formulas are more simple in base \(e\) than in any other base, compare
+
+$$\arraycolsep=1.4pt\def\arraystretch{1.5}
+\begin{array}{rl|rl}
+%\textbf{Base \(e\)} && \textbf{Base \(2\)}\\
+e^x&\approx 1+x, \textrm{ when } x\approx 0\quad
+& \quad 2^x\approx 1+0.7x, & \textrm{ when } x\approx 0\\
+De^x&=e^x & D2^x&\approx 0.7\cdot 2^x\\
+D\log_e(x)&=\frac{1}{x} & D\log_2(x)&\approx \frac{1}{0.7x}\\
+\end{array}
+$$
+
+Moreover, \(e^{it}=\cos(t)+i\sin(t)\), for complex numbers.
+
+Number \(e\) has many natural candidates as a definition: Number \(e\) is the solution of \(\int_1^x\frac{1}{t}dt=1\) and 
+\(e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n\)}
+
+\newpage
+
+\subsection*{Rules}
+
+Each power rule leads to a rule of logarithms. Because of \((x^y)^z=x^{yz}\) we have
+
+\begin{enumerate}
+\item [(a)] $\log_a(b)=\dfrac{1}{\log_b(a)}$
+\item [(b)] $\log_a(b^c)=c\log_a(b)$
+\item [(c)] $\log_a(d)=\dfrac{\log_b(d)}{\log_b(a)}$
+\end{enumerate}
+
+Here (c) shows that you can express all logarithms by using one base (base $b$ on the right-hand-side of (c)). For example, choosing \(a=e\) you can see that all logarithms can be expressed with \(\log_e(x)=\ln(x)\). You can choose your favorite \(a\).\\[2mm]
+
+We state more formulas for \(\log_e(x)=\ln(x)\). The formulas work for all logarithms \(\log_a(x)\).\\[2mm]
+
+\begin{enumerate}
+\item [(d)] $\ln(ab)=\ln(a)+\ln(b)$
+\item [(e)] $\ln(1/b)=-\ln(b)$
+\item [(f)] $\ln(a/b)$
+\end{enumerate}
+
+Here (d) is similar to $a^ba^c=a^{b+c}$, (e) is similar to $1/b=b^{-1}$ and (e) is similar to $a^b/a^c=a^{b-c}$.\\[2mm]
+
+\noindent\textbf{Proof.} (a) Rule \((x^y)^z=x^{yz}\) gives \(b=(b^c)^{\frac{1}{c}}\) and
+$$
+\log_a(b)=\log_a\left(\left(b^{\log_b(a)}\right)^{\frac{1}{\log_b(a)}}\right)
+=\log_a\left(a^{\frac{1}{\log_b(a)}}\right)=\frac{1}{\log_b(a)}.
+$$
+
+(b) Similarly as above
+$$
+\log_a(b^c)=\log_a\left(\left(b^{\log_b(a)}\right)^{\frac{c}{\log_b(a)}}\right)
+=\log_a\left(a^{\frac{c}{\log_b(a)}}\right)=\frac{c}{\log_b(a)}\stackrel{(a)}{=}c\log_a(b).
+$$
+
+(c) Above, we had
+$$
+\log_a(b^c)=\frac{c}{\log_b(a)}.
+$$
+By substituting $b^c=d$, which means $c=\log_b(d)$, we obtain
+$$
+\log_a(d)=\frac{\log_b(d)}{\log_b(a)}.
+$$
+
+(d) Let \(a=e^A\) and \(b=e^B\) so that \(\ln(a)=A\) and \(\ln(b)=B\). We can calculate
+$$
+\ln(ab)=\ln(e^Ae^B)=\ln(e^{A+B})=A+B=\ln(a)+\ln(b).
+$$
+
+(e) Because $1/b=b^{-1}$, this follows from (b).
+
+(f) We have
+$$
+\ln(a/b)\stackrel{(d)}{=}\ln(a)+\ln(1/b)\stackrel{(e)}{=}\ln(a)-\ln(b).
+$$
+
+\end{document}

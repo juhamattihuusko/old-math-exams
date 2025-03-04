@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{xcolor}
+\usepackage{tasks}
+%\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+\usepackage{tkz-euclide}
+
+\input{komennot}
+
+\title{OAMK}
+\author{Juha-Matti Huusko}
+\date{August 2023}
+
+\renewcommand{\ratkaisu}[1]{{\color{blue}\quad\textrm{Ratkaisu: } #1}}
+
+\renewcommand{\ratkaisu}[1]{}
+
+\begin{document}
+\thispagestyle{empty}
+
+\section*{Fysiikan koe}
+\subsubsection*{Soveltava fysiikka ja matematiikka mittauksissa IN00CS87-3010}
+
+Laskemalla kolme tehtävää voit saada täydet pisteet.\\ Jos lasket neljä tehtävää, arvioinnissa otetaan huomioon kolme parasta.
+
+\begin{enumerate}
+\item Jos mittaustulokseksi on annettu $15,14m/s\pm 2~\%$ miltä väliltä voit odottaa todellisen arvon löytyvän?
+\item Oletetaan, että sinulla on suorakulmion mallinen teräslevy. Mittaat sen pituudeksi viivottimella \textbf{8.5} tuumaa, leveydeksi viivottimella \textbf{2.8} tuumaa ja paksuudeksi mikrometriruuvilla 5.98mm. Valmistajan antamien tietojen mukaan teräksen tiheys on  $0.284 lbs/in^3$. Huomaa, että mittaustulosten epätarkkuudet on nyt ilmaistu merkitsevien numeroiden avulla. Laske ja ilmaise vastaukset seuraaviin kysymyksiin oikealla tarkkuudella SI-yksiköissä.
+\begin{enumerate}
+\item Ilmaise annetut lukuarvot SI-yksiköissä.
+\item Mikä on levyn suurimman tahkon pinta-ala? (Yksikkönä $m^2$)
+%\item Mikä on suorakulmion piiri eli kaikkien sivujen summa? (Yksikkönä $m$.)
+\item Mikä on teräslevyn tilavuus? (Yksikkönä $m^3$)
+\item Mikä on teräslevyn massa?
+(massa=tilavuus*tiheys, yksikkönä $kg$)
+\end{enumerate}
+\item \textbf{Kahdensadan} metrin pikajuoksussa juoksija ($m=60kg$) lähtee liikkeelle levosta ja kiihdyttää ensin vakiokiihtyvyydellä 2 sekunnin ajan kunnes hänen nopeutensa on 10m/s. Loput matkasta hän juoksee tällä saavuttamallaan vakionopeudella.
+\begin{enumerate}
+\item Mikä on juoksijan kiihtyvyys ensimmäisen kahden sekunnin aikana?
+\item Mikä on juoksijan keskinopeus kiihdytysvaiheen aikana?
+\item Kuinka pitkän matkan juoksija etenee kiihdytysvaiheen aikana?
+\item Mikä on juoksijan aika maalissa?
+%\item Kiihdytysvaiheen aikana, mikä on keskimääräinen juoksijan kenkien juoksurataan kohdistama \textbf{vaakasuora} voima?
+\end{enumerate}
+\item Ammutaan tykillä tasaisella maalla maanpinnan tasolta $60^\circ$
+kulmaan alkunopeudella \textbf{50m/s}. Unohdetaan ilmanvastus. Voit käyttää putoamiskiihtyvyydelle arvoa $g=10m/s^2$.
+\begin{enumerate}
+\item Mitkä ovat alussa nopeuden vaaka- ja pystysuorat komponentit $v_{0x}$ ja $v_0y$?
+\item Kauanko kestää, että ammus on saavuttanut maksimikorkeutensa?
+\item Mikä on ammuksen maksimikorkeus?
+\item Kuinka pitkälle ammus lentää?
+\end{enumerate}
+\end{enumerate}
+
+\section*{Kaavoja}
+
+\subsection*{Yksikkömuunnokset}
+\begin{itemize}
+\item 1 tuuma = 2.54cm
+\item 1 pauna = 1 lbs = 453.6 g
+\end{itemize}
+
+\subsection*{Newtonin lait}
+\begin{enumerate}
+\item $F_{\textrm{kokonais}}=0 \quad\Rightarrow\quad v=\textrm{vakio}$
+\item $F_{\textrm{kokonais}}=ma$
+\item $F_1=-F_2$
+\end{enumerate}
+
+\subsection*{Vino heittoliike}
+
+Vaakasuunnassa tasainen liike
+$$
+\begin{cases}
+a_x(t)=x''(t)&=0\\
+v_x(t)=x'(t)&=v_{0x}\\
+x(t)&=v_{0x}t
+\end{cases}
+$$
+
+Pystysuunnassa tasaisesti kiihtyvä liike
+$$
+\begin{cases}
+a_y(t)=y''(t)&=-g\\
+v_y(t)=y'(t)&=v_{0y}-gt\\
+y(t)&=y_0+v_{0y}t-\frac12 gt^2
+\end{cases}
+$$
+
+\subsection*{Voimia}
+
+\begin{itemize}
+\item kitka $F_\mu=\mu N$
+\item paino $G=mg$, missä $g=9.81 m/s^2$
+\end{itemize}
+
+\end{document}
